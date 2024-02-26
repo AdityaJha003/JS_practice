@@ -56,3 +56,25 @@ console.log(Object.entries(tinderUser));
 
 // to check if this property is present
 console.log(tinderUser.hasOwnProperty('isLoggedIn'));
+
+
+
+console.log();
+console.log();
+console.log();
+
+
+
+const course = {
+    cousename : "js practice",
+    price : "999",
+    courseInstructor : "Aditya"
+}
+
+// course.courseInstructor
+
+const {courseInstructor : instructor} = course    // couseInstructor destructured to instructor
+
+// {} curly brackets used for destructuring ....REMEMBER !!!
+
+console.log(instructor);  // now we can call instructor
