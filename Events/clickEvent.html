@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/2244330/pexels-photo-2244330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="photoshop"></li>
+
+            <li><img width="200px" id="balls" src="https://images.pexels.com/photos/4022082/pexels-photo-4022082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+
+            <li><img width="200px" id="dice" src="https://images.pexels.com/photos/998679/pexels-photo-998679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+
+            <li><img width="200px" id="game" src="https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></li>
+
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    // Old approach
+    // document.getElementById('dice').onclick = function() {
+    //     alert('You clicked on the dice image');
+    // }
+
+    document.getElementById('dice').addEventListener('click', function() {
+        alert('You clicked on the dice image');
+    });
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altKey, ctrlKey, shiftKey, keyCode
+
+
+
+    // Event Propagation : Bubbling and Capturing
+    // Bubbling : balls clicked --> clicked inside the ul
+    // Capturing : clicked inside the ul --> balls clicked
+
+    // Bubbling : if false, flow goes from balls to ul
+    // Capturing : if true, flow goes from ul to balls
+    document.getElementById('images').addEventListener('click', function(e) {
+        console.log("clicked inside the ul");
+    }, false);
+
+    document.getElementById('balls').addEventListener('click', function(e) {
+        console.log("balls clicked");
+        // e.stopPropagation();     used to stop flow to go to ul
+    }, false);
+
+
+
+    document.getElementById('google').addEventListener('click', function(e) {
+        e.preventDefault();       // prevents the default action of the event which is going to google page
+        e.stopPropagation();
+        console.log("Google clicked");
+    }, false);
+ 
+
+</script>
+
+</html>
